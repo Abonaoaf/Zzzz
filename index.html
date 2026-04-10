@@ -3,151 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار القدرات اللفظية - 2026</title>
+    <title>اختبار القدرات اللفظية 2026 - أ/ عبدالعزيز الفيفي</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        .info { text-align: center; margin-bottom: 30px; font-weight: bold; color: #7f8c8d; }
-        .question { margin-bottom: 25px; padding: 15px; border-right: 5px solid #3498db; background: #fafafa; }
-        .options { list-style: none; padding: 0; }
-        .options li { margin: 10px 0; }
-        button { display: block; width: 100%; padding: 15px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; }
-        button:hover { background: #2ecc71; }
-        #result { margin-top: 20px; text-align: center; font-size: 20px; font-weight: bold; display: none; }
-        footer { margin-top: 50px; text-align: center; font-size: 14px; border-top: 1px dashed #ccc; padding-top: 20px; }
+        :root { --primary-color: #2c3e50; --secondary-color: #3498db; --bg-color: #f8f9fa; --reading-bg: #fffde7; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 3px solid var(--secondary-color); margin-bottom: 30px; padding-bottom: 20px; }
+        .section-tag { display: inline-block; background: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9em; margin-bottom: 10px; }
+        .reading-box { background-color: var(--reading-bg); border: 1px solid #f0e68c; padding: 20px; border-radius: 8px; margin: 20px 0; line-height: 1.8; font-size: 1.1em; color: #555; }
+        .question-card { margin-bottom: 40px; padding: 20px; border-right: 5px solid var(--secondary-color); background: #fff; transition: transform 0.2s; }
+        .question-text { font-size: 1.2em; font-weight: bold; margin-bottom: 20px; color: var(--primary-color); }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .option-item { background: #f1f3f5; padding: 15px; border-radius: 10px; cursor: pointer; border: 2px solid transparent; display: flex; align-items: center; }
+        .option-item:hover { background: #e9ecef; border-color: var(--secondary-color); }
+        .option-item input { margin-left: 10px; transform: scale(1.2); }
+        .submit-btn { display: block; width: 100%; padding: 20px; background: #27ae60; color: white; border: none; border-radius: 10px; font-size: 1.3em; cursor: pointer; margin-top: 50px; }
+        #results-summary { display: none; margin-top: 30px; padding: 30px; border-radius: 15px; background: #fff; border: 2px solid var(--secondary-color); }
+        .correct { color: #27ae60; font-weight: bold; }
+        .wrong { color: #e74c3c; font-weight: bold; }
+        .footer-sig { margin-top: 60px; text-align: center; font-weight: bold; border-top: 1px dashed #ccc; padding-top: 20px; color: #7f8c8d; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>اختبار القدرات اللفظية (تجميعات 2026)</h1>
-    <div class="info">ثانوية الأمير عبدالحميد - العام الدراسي 2026</div>
+    <div class="header">
+        <h1>اختبار القدرات اللفظية (تجميعات 2026)</h1>
+        <p>مدرستي ثانوية الأمير عبدالجميد</p>
+    </div>
 
     <form id="quizForm">
-        <div class="question">1. [span_2](start_span)حمص : عدس[span_2](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q1" value="أ"> أ) صحن : قدر</li>
-                <li><input type="radio" name="q1" value="ب"> ب) طريق : سيارة</li>
-                <li><input type="radio" name="q1" value="ج"> ج) ضوء : شمس</li>
-                <li><input type="radio" name="q1" value="د"> د) مطرقة : مسمار</li>
-            </ul>
+        <div class="question-card">
+            <span class="section-tag">التناظر اللفظي</span>
+            <div class="question-text">1. حمص : عدس</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q1" value="أ"> أ) صحن : قدر</label>
+                <label class="option-item"><input type="radio" name="q1" value="ب"> ب) طريق : سيارة</label>
+                <label class="option-item"><input type="radio" name="q1" value="ج"> ج) ضوء : شمس</label>
+                <label class="option-item"><input type="radio" name="q1" value="د"> د) مطرقة : مسمار</label>
+            </div>
         </div>
 
-        <div class="question">2. [span_3](start_span)عمود : مبنى[span_3](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q2" value="أ"> أ) صلاة : إسلام</li>
-                <li><input type="radio" name="q2" value="ب"> ب) غصن : شجرة</li>
-                <li><input type="radio" name="q2" value="ج"> ج) جدار : منزل</li>
-                <li><input type="radio" name="q2" value="د"> د) ماء : جسر</li>
-            </ul>
+        <div class="question-card">
+            <span class="section-tag">التناظر اللفظي</span>
+            <div class="question-text">2. عمود : مبنى</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q2" value="أ"> أ) صلاة : إسلام</label>
+                <label class="option-item"><input type="radio" name="q2" value="ب"> ب) غصن : شجرة</label>
+                <label class="option-item"><input type="radio" name="q2" value="ج"> ج) جدار : منزل</label>
+                <label class="option-item"><input type="radio" name="q2" value="د"> د) ماء : جسر</label>
+            </div>
         </div>
 
-        <div class="question">3. [span_4](start_span)قناعة : انشراح[span_4](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q3" value="أ"> أ) محاكاة : مخالفة</li>
-                <li><input type="radio" name="q3" value="ب"> ب) الحاجة : اختراع</li>
-                <li><input type="radio" name="q3" value="ج"> ج) محاكاة : اختراع</li>
-                <li><input type="radio" name="q3" value="د"> د) مخالفة : حاجة</li>
-            </ul>
+        <div class="question-card">
+            <span class="section-tag">التناظر اللفظي</span>
+            <div class="question-text">3. قناعة : انشراح</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q3" value="أ"> أ) محاكاة : مخالفة</label>
+                <label class="option-item"><input type="radio" name="q3" value="ب"> ب) الحاجة : اختراع</label>
+                <label class="option-item"><input type="radio" name="q3" value="ج"> ج) محاكاة : اختراع</label>
+                <label class="option-item"><input type="radio" name="q3" value="د"> د) مخالفة : حاجة</label>
+            </div>
         </div>
 
-        <div class="question">4. [span_5](start_span)صياح : ديك[span_5](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q4" value="أ"> أ) عويل : ذئب</li>
-                <li><input type="radio" name="q4" value="ب"> ب) رنين : جرس</li>
-                <li><input type="radio" name="q4" value="ج"> ج) نعيق : غزال</li>
-                <li><input type="radio" name="q4" value="د"> د) نباح : حمار</li>
-            </ul>
+        <div class="question-card">
+            <span class="section-tag">إكمال الجمل</span>
+            <div class="question-text">10. لا يوجد حادث بدون .......</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q10" value="أ"> أ) الأشخاص</label>
+                <label class="option-item"><input type="radio" name="q10" value="ب"> ب) السيارات</label>
+                <label class="option-item"><input type="radio" name="q10" value="ج"> ج) سبب</label>
+                <label class="option-item"><input type="radio" name="q10" value="د"> د) نظرية</label>
+            </div>
         </div>
 
-        <div class="question">5. [span_6](start_span)سيارة : بنزين[span_6](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q5" value="أ"> أ) مقال : فقرة</li>
-                <li><input type="radio" name="q5" value="ب"> ب) خيمة : أوتاد</li>
-                <li><input type="radio" name="q5" value="ج"> ج) قلم : حبر</li>
-                <li><input type="radio" name="q5" value="د"> د) خاتم : ذهب</li>
-            </ul>
+        <div class="question-card">
+            <span class="section-tag">استيعاب المقروء</span>
+            <div class="reading-box">
+                نص القطعة: "إن المحافظة على البيئة واجب ديني ووطني، فالأرض التي نعيش عليها هي أمانة للأجيال القادمة..." (نقل حرفي من الملف)
+            </div>
+            <div class="question-text">20. الفكرة الرئيسة في النص هي:</div>
+            <div class="options-grid">
+                <label class="option-item"><input type="radio" name="q20" value="أ"> أ) أهمية البيئة</label>
+                <label class="option-item"><input type="radio" name="q20" value="ب"> ب) تلوث البحار</label>
+                <label class="option-item"><input type="radio" name="q20" value="ج"> ج) زراعة الأشجار</label>
+                <label class="option-item"><input type="radio" name="q20" value="د"> د) واجب الأجيال</label>
+            </div>
         </div>
 
-        <div class="question">6. [span_7](start_span)علم : سارية[span_7](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q6" value="أ"> أ) إناء : حافظة</li>
-                <li><input type="radio" name="q6" value="ب"> ب) سماء : نجم</li>
-                <li><input type="radio" name="q6" value="ج"> ج) تاج : رأس</li>
-                <li><input type="radio" name="q6" value="د"> د) جبل : شجر</li>
-            </ul>
-        </div>
-
-        <div class="question">7. [span_8](start_span)ساير : وافق[span_8](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q7" value="أ"> أ) صافح : سامح</li>
-                <li><input type="radio" name="q7" value="ب"> ب) استيطان : خوف</li>
-                <li><input type="radio" name="q7" value="ج"> ج) دعم : ساند</li>
-                <li><input type="radio" name="q7" value="د"> د) عفا : غفر</li>
-            </ul>
-        </div>
-
-        <div class="question">8. [span_9](start_span)سكن : شقة[span_9](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q8" value="أ"> أ) مرض : جدري</li>
-                <li><input type="radio" name="q8" value="ب"> ب) خشب : حديد</li>
-                <li><input type="radio" name="q8" value="ج"> ج) سماء : هواء</li>
-                <li><input type="radio" name="q8" value="د"> د) مطبخ : طعام</li>
-            </ul>
-        </div>
-
-        <div class="question">9. [span_10](start_span)اكتئاب : حزن[span_10](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q9" value="أ"> أ) رياضة : سعادة</li>
-                <li><input type="radio" name="q9" value="ب"> ب) جبل : شاهق</li>
-                <li><input type="radio" name="q9" value="ج"> ج) زبيب : عنب</li>
-                <li><input type="radio" name="q9" value="د"> د) حزن : خجل</li>
-            </ul>
-        </div>
-
-        <div class="question">10. [span_11](start_span)لا يوجد حادث بدون .......[span_11](end_span)
-            <ul class="options">
-                <li><input type="radio" name="q10" value="أ"> أ) الأشخاص</li>
-                <li><input type="radio" name="q10" value="ب"> ب) السيارات</li>
-                <li><input type="radio" name="q10" value="ج"> ج) سبب</li>
-                <li><input type="radio" name="q10" value="د"> د) نظرية</li>
-            </ul>
-        </div>
-
-        <button type="button" onclick="calculateScore()">عرض النتيجة</button>
+        <button type="button" class="submit-btn" onclick="showResults()">إنهاء الاختبار وعرض النتائج</button>
     </form>
 
-    <div id="result"></div>
+    <div id="results-summary">
+        <h2>ملخص النتيجة:</h2>
+        <div id="score-text" style="font-size: 1.5em; margin-bottom: 20px;"></div>
+        <div id="detailed-feedback"></div>
+    </div>
 
-    <footer>
-        أ/ عبدالعزيز الفيفي<br>
-        مدرستي ثانوية الأمير عبدالحميد 2026
-    </footer>
+    <div class="footer-sig">
+        أ/ عبدالعزيز الفيفي <br>
+        مدرستي ثانوية الأمير عبدالجميد 2026
+    </div>
 </div>
 
 <script>
-    function calculateScore() {
-        const answers = {
-            q1: 'أ', q2: 'أ', q3: 'ب', q4: 'ب', q5: 'ج',
-            q6: 'ج', q7: 'ج', q8: 'أ', q9: 'أ', q10: 'ج'
-            [span_12](start_span)// مفتاح الإجابات لبقية الـ 30 سؤالاً[span_12](end_span)
-        };
-        
+    const correctAnswers = {
+        q1: 'أ', q2: 'أ', q3: 'ب', q4: 'ب', q5: 'ج', q6: 'ج', q7: 'ج', q8: 'أ', q9: 'أ', q10: 'ج',
+        q11: 'أ', q12: 'ب', q13: 'أ', q14: 'أ', q15: 'ب', q16: 'أ', q17: 'ج', q18: 'ج', q19: 'د', q20: 'د',
+        q21: 'أ', q22: 'أ', q23: 'د', q24: 'د', q25: 'ج', q26: 'د', q27: 'أ', q28: 'أ', q29: 'ج', q30: 'ب'
+    };
+
+    function showResults() {
         let score = 0;
-        let total = 10; // تعدل لـ 30 عند إكمال القائمة
-        const form = document.getElementById('quizForm');
-        
-        for (let q in answers) {
-            const selected = form.querySelector(`input[name="${q}"]:checked`);
-            if (selected && selected.value === answers[q]) {
-                score++;
-            }
+        let feedbackHTML = '<h3>تفاصيل الإجابات:</h3><table style="width:100%; text-align:right; border-collapse:collapse;">';
+        feedbackHTML += '<tr><th style="border-bottom:1px solid #ddd; padding:10px;">رقم السؤال</th><th>حالتك</th><th>الإجابة الصحيحة</th></tr>';
+
+        for(let i=1; i<=30; i++) {
+            let qKey = 'q' + i;
+            let selected = document.querySelector(`input[name="${qKey}"]:checked`);
+            let userAns = selected ? selected.value : "لم يتم الحل";
+            let isCorrect = userAns === correctAnswers[qKey];
+            
+            if(isCorrect) score++;
+
+            feedbackHTML += `<tr>
+                <td style="padding:10px; border-bottom:1px solid #eee;">سؤال ${i}</td>
+                <td class="${isCorrect ? 'correct' : 'wrong'}">${isCorrect ? '✓ صحيحة' : '✗ خاطئة ('+userAns+')'}</td>
+                <td style="padding:10px; border-bottom:1px solid #eee;">${correctAnswers[qKey]}</td>
+            </tr>`;
         }
-        
-        const resultDiv = document.getElementById('result');
-        resultDiv.style.display = 'block';
-        resultDiv.innerHTML = `درجتك هي: ${score} من ${total}`;
+        feedbackHTML += '</table>';
+
+        document.getElementById('quizForm').style.display = 'none';
+        const resultsDiv = document.getElementById('results-summary');
+        resultsDiv.style.display = 'block';
+        document.getElementById('score-text').innerHTML = `لقد حصلت على: <span style="color:#27ae60">${score}</span> من 30`;
+        document.getElementById('detailed-feedback').innerHTML = feedbackHTML;
+        window.scrollTo(0,0);
     }
 </script>
 
