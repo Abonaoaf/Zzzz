@@ -3,217 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحدي اليوم - أ/ عبدالعزيز الفيفي</title>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <title>اختبار القدرات اللفظية - 2026</title>
     <style>
-        :root { --primary: #4a148c; --secondary: #7b1fa2; --bg: #f5f5f5; --accent: #ff9800; --correct: #2e7d32; --wrong: #c62828; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .quiz-container { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 650px; text-align: center; position: relative; }
-        #timer-bar { position: absolute; top: 0; right: 0; height: 6px; background: var(--accent); width: 100%; transition: width 1s linear; border-radius: 15px 15px 0 0; }
-        .option-btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 8px; background: none; cursor: pointer; transition: 0.3s; font-size: 1.1rem; font-weight: 500; }
-        .correct-flash { background-color: #e8f5e9 !important; border-color: var(--correct) !important; color: var(--correct); border-width: 3px !important; }
-        .wrong-flash { background-color: #ffeeb2 !important; border-color: var(--wrong) !important; color: var(--wrong); }
-        .hidden { display: none; }
-        .reading-text { background: #fff9c4; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: right; font-size: 1rem; border-right: 5px solid var(--accent); line-height: 1.6; }
-        input[type="text"] { width: 85%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 2px solid #ddd; font-size: 1rem; text-align: center; }
-        .btn-start { background: var(--primary); color: white; padding: 12px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; }
-        #feedback { margin-top: 15px; font-weight: bold; font-size: 1.1rem; min-height: 1.5em; }
-        #timer-text { font-weight: bold; color: var(--accent); margin-bottom: 10px; }
-        .copyright { font-size: 0.85rem; color: #666; margin-top: 25px; border-top: 1px solid #eee; padding-top: 10px; }
-
-        .normal-text { color: #000; font-weight: normal; font-size: 0.85rem; }
-        .date-red-small { color: #e53e3e; font-size: 0.85rem; font-weight: bold; margin: 10px 0; display: inline-block; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .info { text-align: center; margin-bottom: 30px; font-weight: bold; color: #7f8c8d; }
+        .question { margin-bottom: 25px; padding: 15px; border-right: 5px solid #3498db; background: #fafafa; }
+        .options { list-style: none; padding: 0; }
+        .options li { margin: 10px 0; }
+        button { display: block; width: 100%; padding: 15px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; }
+        button:hover { background: #2ecc71; }
+        #result { margin-top: 20px; text-align: center; font-size: 20px; font-weight: bold; display: none; }
+        footer { margin-top: 50px; text-align: center; font-size: 14px; border-top: 1px dashed #ccc; padding-top: 20px; }
     </style>
 </head>
-<body onload="updateDateTime()">
+<body>
 
-<div class="quiz-container">
-    <div id="timer-bar"></div>
-    
-    <div id="login-section">
-        <h2 style="color: var(--primary);">( تحدي اليوم - تسريبات 9 أبريل )</h2>
-        
-        <div id="date-display" class="date-red-small">جاري تحميل التاريخ...</div>
-        
-        <div class="copyright">أ/ <span class="normal-text">عبدالعزيز الفيفي</span> - <span class="normal-text">ثانوية الأمير عبدالمجيد 🎓</span></div>
-        <p></p>
-        <input type="text" id="student-name" placeholder="أدخل اسمك الثلاثي لتبدأ...">
-        <br>
-        <button class="btn-start" onclick="startQuiz()">بدأ الاختبار</button>
-    </div>
+<div class="container">
+    <h1>اختبار القدرات اللفظية (تجميعات 2026)</h1>
+    <div class="info">ثانوية الأمير عبدالحميد - العام الدراسي 2026</div>
 
-    <div id="quiz-section" class="hidden">
-        <div id="timer-text">الوقت المتبقي: 40</div>
-        <h3 id="question-title" style="color: var(--secondary); margin-bottom: 5px;"></h3>
-        <div id="reading-container" class="reading-text hidden"></div>
-        <h2 id="question-text" style="margin-top: 5px;"></h2>
-        <div id="options-container"></div>
-        <div id="feedback"></div>
-        <div class="copyright"> أ/ <span class="normal-text">عبدالعزيز الفيفي</span> - <span class="normal-text">ثانوية الأمير عبدالمجيد 🎓</span></div>
-    </div>
+    <form id="quizForm">
+        <div class="question">1. [span_2](start_span)حمص : عدس[span_2](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q1" value="أ"> أ) صحن : قدر</li>
+                <li><input type="radio" name="q1" value="ب"> ب) طريق : سيارة</li>
+                <li><input type="radio" name="q1" value="ج"> ج) ضوء : شمس</li>
+                <li><input type="radio" name="q1" value="د"> د) مطرقة : مسمار</li>
+            </ul>
+        </div>
 
-    <div id="result-section" class="hidden">
-        <h2>تم اكتمال الاختبار بنجاح</h2>
-        <h1 id="final-score" style="color: var(--primary);"></h1>
-        <button class="btn-start" onclick="location.reload()" style="
-            background: linear-gradient(45deg, #ff512f, #dd2476);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(221, 36, 118, 0.4);
-            transition: transform 0.3s ease;
-            direction: rtl;
-        ">
-            ليس هناك تحدٍ أكبر من تطوير ذاتك؛ أعد الكرة الآن 🚀
-        </button>
-        <p style="margin-top: 20px;">✨ أ / <span class="normal-text">عبد العزيز الفيفي</span> - <span class="normal-text">ثانوية الأمير عبدالمجيد 🎓</span></p>
-    </div>
+        <div class="question">2. [span_3](start_span)عمود : مبنى[span_3](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q2" value="أ"> أ) صلاة : إسلام</li>
+                <li><input type="radio" name="q2" value="ب"> ب) غصن : شجرة</li>
+                <li><input type="radio" name="q2" value="ج"> ج) جدار : منزل</li>
+                <li><input type="radio" name="q2" value="د"> د) ماء : جسر</li>
+            </ul>
+        </div>
+
+        <div class="question">3. [span_4](start_span)قناعة : انشراح[span_4](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q3" value="أ"> أ) محاكاة : مخالفة</li>
+                <li><input type="radio" name="q3" value="ب"> ب) الحاجة : اختراع</li>
+                <li><input type="radio" name="q3" value="ج"> ج) محاكاة : اختراع</li>
+                <li><input type="radio" name="q3" value="د"> د) مخالفة : حاجة</li>
+            </ul>
+        </div>
+
+        <div class="question">4. [span_5](start_span)صياح : ديك[span_5](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q4" value="أ"> أ) عويل : ذئب</li>
+                <li><input type="radio" name="q4" value="ب"> ب) رنين : جرس</li>
+                <li><input type="radio" name="q4" value="ج"> ج) نعيق : غزال</li>
+                <li><input type="radio" name="q4" value="د"> د) نباح : حمار</li>
+            </ul>
+        </div>
+
+        <div class="question">5. [span_6](start_span)سيارة : بنزين[span_6](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q5" value="أ"> أ) مقال : فقرة</li>
+                <li><input type="radio" name="q5" value="ب"> ب) خيمة : أوتاد</li>
+                <li><input type="radio" name="q5" value="ج"> ج) قلم : حبر</li>
+                <li><input type="radio" name="q5" value="د"> د) خاتم : ذهب</li>
+            </ul>
+        </div>
+
+        <div class="question">6. [span_7](start_span)علم : سارية[span_7](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q6" value="أ"> أ) إناء : حافظة</li>
+                <li><input type="radio" name="q6" value="ب"> ب) سماء : نجم</li>
+                <li><input type="radio" name="q6" value="ج"> ج) تاج : رأس</li>
+                <li><input type="radio" name="q6" value="د"> د) جبل : شجر</li>
+            </ul>
+        </div>
+
+        <div class="question">7. [span_8](start_span)ساير : وافق[span_8](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q7" value="أ"> أ) صافح : سامح</li>
+                <li><input type="radio" name="q7" value="ب"> ب) استيطان : خوف</li>
+                <li><input type="radio" name="q7" value="ج"> ج) دعم : ساند</li>
+                <li><input type="radio" name="q7" value="د"> د) عفا : غفر</li>
+            </ul>
+        </div>
+
+        <div class="question">8. [span_9](start_span)سكن : شقة[span_9](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q8" value="أ"> أ) مرض : جدري</li>
+                <li><input type="radio" name="q8" value="ب"> ب) خشب : حديد</li>
+                <li><input type="radio" name="q8" value="ج"> ج) سماء : هواء</li>
+                <li><input type="radio" name="q8" value="د"> د) مطبخ : طعام</li>
+            </ul>
+        </div>
+
+        <div class="question">9. [span_10](start_span)اكتئاب : حزن[span_10](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q9" value="أ"> أ) رياضة : سعادة</li>
+                <li><input type="radio" name="q9" value="ب"> ب) جبل : شاهق</li>
+                <li><input type="radio" name="q9" value="ج"> ج) زبيب : عنب</li>
+                <li><input type="radio" name="q9" value="د"> د) حزن : خجل</li>
+            </ul>
+        </div>
+
+        <div class="question">10. [span_11](start_span)لا يوجد حادث بدون .......[span_11](end_span)
+            <ul class="options">
+                <li><input type="radio" name="q10" value="أ"> أ) الأشخاص</li>
+                <li><input type="radio" name="q10" value="ب"> ب) السيارات</li>
+                <li><input type="radio" name="q10" value="ج"> ج) سبب</li>
+                <li><input type="radio" name="q10" value="د"> د) نظرية</li>
+            </ul>
+        </div>
+
+        <button type="button" onclick="calculateScore()">عرض النتيجة</button>
+    </form>
+
+    <div id="result"></div>
+
+    <footer>
+        أ/ عبدالعزيز الفيفي<br>
+        مدرستي ثانوية الأمير عبدالحميد 2026
+    </footer>
 </div>
 
 <script>
-    function updateDateTime() {
-        const today = new Date();
-        const hijriOptions = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', calendar: 'islamic-umalqura', numberingSystem: 'arabic' };
-        const gregOptions = { day: 'numeric', month: 'long', year: 'numeric', numberingSystem: 'arabic' };
-        const hijriDate = new Intl.DateTimeFormat('ar-SA', hijriOptions).format(today);
-        const gregDate = new Intl.DateTimeFormat('ar-SA', gregOptions).format(today);
-        document.getElementById('date-display').innerText = `${hijriDate} | ${gregDate} م`;
-    }
-
-    let timeLeft = 40;
-    let timerInterval;
-    let currentQ = 0;
-    let score = 0;
-    const TRANSITION_DELAY = 4000;
-
-    // تم تحديث البيانات هنا من ملف التجميعات
-    const rawData = [
-        { type: "التناظر اللفظي", q: "حمص : عدس", options: ["صحن : قدر", "طريق : سيارة", "ضوء : شمس", "مطرقة : مسمار"], correctText: "صحن : قدر" },
-        { type: "التناظر اللفظي", q: "عمود : مبنى", options: ["صلاة : إسلام", "غصن : شجرة", "جدار : منزل", "ماء : جسر"], correctText: "صلاة : إسلام" },
-        { type: "التناظر اللفظي", q: "الحاجة : اختراع", options: ["محاكاة : مخالفة", "قناعة : انشراح", "محاكاة : اختراع", "مخالفة : حاجة"], correctText: "قناعة : انشراح" },
-        { type: "التناظر اللفظي", q: "صياح : ديك", options: ["عويل : ذئب", "رنين : جرس", "نعيق : غزال", "نباح : حمار"], correctText: "رنين : جرس" },
-        { type: "التناظر اللفظي", q: "سيارة : بنزين", options: ["مقال : فقرة", "خيمة : أوتاد", "قلم : حبر", "خاتم : ذهب"], correctText: "قلم : حبر" },
-        { type: "التناظر اللفظي", q: "علم : سارية", options: ["إناء : حافظة", "سماء : نجم", "تاج : رأس", "جبل : شجر"], correctText: "تاج : رأس" },
-        { type: "التناظر اللفظي", q: "ساير : وافق", options: ["صافح : سامح", "استيطان : خوف", "دعم : ساند", "عفا : غفر"], correctText: "دعم : ساند" },
-        { type: "التناظر اللفظي", q: "سكن : شقة", options: ["مرض : جدري", "خشب : حديد", "سماء : هواء", "مطبخ : طعام"], correctText: "مرض : جدري" },
-        { type: "التناظر اللفظي", q: "اكتئاب : حزن", options: ["رياضة : سعادة", "جبل : شاهق", "زبيب : عنب", "حزن : خجل"], correctText: "رياضة : سعادة" },
+    function calculateScore() {
+        const answers = {
+            q1: 'أ', q2: 'أ', q3: 'ب', q4: 'ب', q5: 'ج',
+            q6: 'ج', q7: 'ج', q8: 'أ', q9: 'أ', q10: 'ج'
+            [span_12](start_span)// مفتاح الإجابات لبقية الـ 30 سؤالاً[span_12](end_span)
+        };
         
-        { type: "إكمال الجمل", q: "لا يوجد حادث بدون ........", options: ["الأشخاص", "السيارات", "سبب", "نظرية"], correctText: "سبب" },
-        { type: "إكمال الجمل", q: "يكرم الرجل بـ ........ والجميل ........ والصمت.", options: ["الحكمة - الجميل", "الجمال - خير", "المال - نقمة", "اللؤم - شديد"], correctText: "الحكمة - الجميل" },
-        { type: "إكمال الجمل", q: "الاستخفاف من الجدية يسبب ........ والاستخفاف من الهزل يسبب ........", options: ["الارتباك - النجاح", "الضعف - الإنجاز", "الفوضى - التوازن", "الخيبة - الحماس"], correctText: "الضعف - الإنجاز" },
-        { type: "إكمال الجمل", q: "أشد الناس ........ أقواهم اعتقاداً في فضل نفسه وأثبت الناس ........ أشدهم اتهاماً لنفسه.", options: ["حماقة - عقلاً", "غضباً - هدوءاً", "عدواً - صديقاً", "عالماً - جاهلاً"], correctText: "حماقة - عقلاً" },
-        { type: "إكمال الجمل", q: "الشخص ........ هو كثير الاعتقاد في فضل نفسه، والشخص ........ الذي يتهم نفسه.", options: ["الأحمق - العاقل", "المغرور - المتواضع", "الأناني - المتسامح", "المتكبر - المتفكر"], correctText: "الأحمق - العاقل" },
-        { type: "إكمال الجمل", q: "إذا تذكرت ........ فتذكر تاريخك المشرق لتفرح، وإذا ذكرت ........ فاذكر إنجازاتك لتسعد.", options: ["الأحزان - الكروب", "الماضي - يومك", "السالف - الآتي", "تهتكك - محاسنك"], correctText: "الماضي - يومك" },
+        let score = 0;
+        let total = 10; // تعدل لـ 30 عند إكمال القائمة
+        const form = document.getElementById('quizForm');
         
-        { type: "الخطأ السياقي", q: "الغفوة في ضوء الشموع وأمامك كتاب مفتوح في حوار مع أشخاص من أجيال لم تعاصرهم هي المتعة التي ليس لها مثيل.", options: ["الغفوة", "الشموع", "حوار", "مثيل"], correctText: "الغفوة" },
-        { type: "الخطأ السياقي", q: "عندما يفوز الفريق يفرح مشجعوه، ولكن عندما يخسر يشعر منافسوه بشعور سيء.", options: ["يفوز", "مشجعوه", "منافسوه", "سيء"], correctText: "منافسوه" }
-    ];
-
-    let quizData = [];
-
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+        for (let q in answers) {
+            const selected = form.querySelector(`input[name="${q}"]:checked`);
+            if (selected && selected.value === answers[q]) {
+                score++;
+            }
         }
-        return array;
-    }
-
-    function startQuiz() {
-        if (!document.getElementById('student-name').value) { alert("لطفاً، ادخل اسمك أولاً"); return; }
-        quizData = shuffle([...rawData]);
-        document.getElementById('login-section').classList.add('hidden');
-        document.getElementById('quiz-section').classList.remove('hidden');
-        showQuestion();
-    }
-
-    function showQuestion() {
-        const q = quizData[currentQ];
-        const shuffledOptions = shuffle([...q.options]);
-        document.getElementById('question-title').innerText = `س ${currentQ + 1} في ( ${q.type} )`;
-        const readingBox = document.getElementById('reading-container');
-        if (q.text) { readingBox.innerText = q.text; readingBox.classList.remove('hidden'); } 
-        else { readingBox.classList.add('hidden'); }
-        document.getElementById('question-text').innerText = q.q;
-        const container = document.getElementById('options-container');
-        container.innerHTML = '';
-        document.getElementById('feedback').innerText = '';
-        shuffledOptions.forEach((opt, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerText = opt;
-            btn.onclick = () => checkAnswer(index, opt === q.correctText, q.correctText, btn);
-            container.appendChild(btn);
-        });
-        startTimer();
-    }
-
-    function startTimer() {
-        clearInterval(timerInterval);
-        timeLeft = 40;
-        updateTimerUI();
-        timerInterval = setInterval(() => {
-            timeLeft--;
-            updateTimerUI();
-            if (timeLeft <= 0) { clearInterval(timerInterval); showCorrectAndNext(); }
-        }, 1000);
-    }
-
-    function updateTimerUI() {
-        document.getElementById('timer-text').innerText = `الوقت المتبقي: ${timeLeft}`;
-        document.getElementById('timer-bar').style.width = `${(timeLeft / 40) * 100}%`;
-    }
-
-    function checkAnswer(index, isCorrect, correctText, clickedBtn) {
-        clearInterval(timerInterval);
-        disableOptions();
-        if (isCorrect) {
-            score++;
-            clickedBtn.classList.add('correct-flash');
-            document.getElementById('feedback').innerHTML = "<span style='color:green'>إجابة صحيحة! أحسنت يا بطل 🌟</span>";
-            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-        } else {
-            clickedBtn.classList.add('wrong-flash');
-            highlightCorrect(correctText);
-            document.getElementById('feedback').innerHTML = "<span style='color:red'>محاولة جيدة، واصل.. 💪</span>";
-        }
-        setTimeout(nextQuestion, TRANSITION_DELAY);
-    }
-
-    function highlightCorrect(correctText) {
-        const btns = document.querySelectorAll('.option-btn');
-        btns.forEach(btn => { if (btn.innerText === correctText) btn.classList.add('correct-flash'); });
-    }
-
-    function showCorrectAndNext() {
-        const q = quizData[currentQ];
-        document.getElementById('feedback').innerHTML = "<span style='color:orange'>انتهى الوقت! الصواب موضح بالأخضر..</span>";
-        highlightCorrect(q.correctText);
-        disableOptions();
-        setTimeout(nextQuestion, TRANSITION_DELAY);
-    }
-
-    function disableOptions() {
-        const btns = document.querySelectorAll('.option-btn');
-        btns.forEach(btn => btn.disabled = true);
-    }
-
-    function nextQuestion() {
-        currentQ++;
-        if (currentQ < quizData.length) { showQuestion(); } 
-        else { finishQuiz(); }
-    }
-
-    function finishQuiz() {
-        document.getElementById('quiz-section').classList.add('hidden');
-        document.getElementById('result-section').classList.remove('hidden');
-        document.getElementById('final-score').innerText = `درجتك هي: ${score} من ${quizData.length}`;
+        
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `درجتك هي: ${score} من ${total}`;
     }
 </script>
+
 </body>
 </html>
-
