@@ -2,257 +2,147 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار القدرات اللفظية - الأستاذ عبدالعزيز الفيفي</title>
+    <title>بنك أسئلة القدرات اللفظية الكامل - 30 سؤالاً</title>
     <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --correct: #27ae60;
-            --wrong: #e74c3c;
-            --passage-bg: #fffde7;
-            --light-bg: #f4f7f6;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-bg);
-            margin: 0;
-            padding: 20px;
-            direction: rtl;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        header {
-            text-align: center;
-            border-bottom: 2px solid #eee;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-        }
-
-        .school-name { color: var(--accent); font-weight: bold; font-size: 1.2rem; }
-        
-        .passage-box {
-            background-color: var(--passage-bg);
-            border: 2px solid #fff59d;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: #444;
-        }
-
-        .question-text {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .option-btn {
-            padding: 15px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            background: #fff;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            text-align: right;
-        }
-
-        .option-btn:hover { border-color: var(--accent); background: #f0f8ff; }
-        .option-btn.correct { background-color: var(--correct) !important; color: white; border-color: var(--correct); }
-        .option-btn.wrong { background-color: var(--wrong) !important; color: white; border-color: var(--wrong); }
-
-        .next-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            margin-top: 25px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .summary-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .summary-table th, .summary-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-        }
-
-        .summary-table th { background: var(--primary); color: white; }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #7f8c8d;
-        }
-
-        .hidden { display: none; }
-        @media (max-width: 600px) { .options-grid { grid-template-columns: 1fr; } }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f0f2f5; padding: 20px; direction: rtl; }
+        .quiz-container { max-width: 850px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #3498db; margin-bottom: 25px; padding-bottom: 10px; }
+        .question-box { margin-bottom: 25px; display: none; }
+        .active { display: block; }
+        .question-title { font-size: 1.25rem; font-weight: bold; color: #2c3e50; margin-bottom: 15px; background: #e8f4fd; padding: 10px; border-right: 5px solid #3498db; }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .option-btn { padding: 12px; border: 2px solid #ddd; border-radius: 8px; background: white; cursor: pointer; text-align: right; font-size: 1.05rem; transition: 0.3s; }
+        .option-btn:hover { border-color: #3498db; background: #f0f8ff; }
+        .correct { background-color: #27ae60 !important; color: white; border-color: #27ae60; }
+        .wrong { background-color: #e74c3c !important; color: white; border-color: #e74c3c; }
+        .nav-btns { margin-top: 25px; text-align: center; }
+        button.nav { padding: 10px 25px; font-size: 1rem; cursor: pointer; border-radius: 5px; border: none; background: #2c3e50; color: white; }
+        .summary-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .summary-table th, .summary-table td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+        .footer { margin-top: 30px; text-align: center; color: #7f8c8d; font-size: 0.9rem; border-top: 1px solid #eee; padding-top: 10px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h2 style="margin:0;">اختبار القدرات اللفظية الرقمي</h2>
-        <div class="school-name">ثانوية الأمير عبد المجيد</div>
-        <div style="font-weight: 500;">إعداد الأستاذ: عبدالعزيز الفيفي</div>
-    </header>
-
-    <div id="quiz-section">
-        <div id="passage-container" class="passage-box hidden">
-            <strong>نص الاستيعاب:</strong><br>
-            <span id="passage-text"></span>
-        </div>
-
-        <div class="question-box">
-            <div id="question-text" class="question-text"></div>
-            <div id="options-container" class="options-grid"></div>
-        </div>
-
-        <button id="btn-next" class="next-btn hidden" onclick="nextStep()">السؤال التالي</button>
+<div class="quiz-container">
+    <div class="header">
+        <h2>اختبار تجميعات اللفظي 2026</h2>
+        <p>إعداد الأستاذ: عبدالعزيز الفيفي</p>
     </div>
 
-    <div id="result-section" class="hidden">
-        <h2 style="text-align:center;">ملخص الأداء النهائي</h2>
-        <p style="text-align:center; font-size: 1.2rem;">درجتك هي: <span id="score-display"></span> من <span id="total-display"></span></p>
+    <div id="quiz-body">
+        </div>
+
+    <div id="results-area" style="display:none;">
+        <h3 style="text-align:center;">نتائج الاختبار النهائية</h3>
         <table class="summary-table">
-            <thead>
-                <tr>
-                    <th>السؤال</th>
-                    <th>إجابتك</th>
-                    <th>النتيجة</th>
-                </tr>
-            </thead>
-            <tbody id="summary-body"></tbody>
+            <thead><tr><th>رقم السؤال</th><th>النتيجة</th></tr></thead>
+            <tbody id="results-table-body"></tbody>
         </table>
-        <button class="next-btn" onclick="location.reload()">إعادة الاختبار</button>
+        <button class="nav" style="width:100%; margin-top:15px;" onclick="location.reload()">إعادة الاختبار</button>
     </div>
 
-    <footer>
-        جميع حقوق الحفظ محفوظة &copy; 2026 - الأستاذ عبدالعزيز الفيفي
-    </footer>
+    <div class="nav-btns" id="nav-controls">
+        <button class="nav" id="next-btn" onclick="nextQuestion()">السؤال التالي</button>
+    </div>
+
+    <div class="footer">جميع الحقوق محفوظة &copy; 2026 - مدرسة الأمير عبد المجيد الثانوية</div>
 </div>
 
 <script>
-    const quizData = [
-        { q: "حمص : عدس", options: ["صحن : قدر", "طريق : سيارة", "ضوء : شمس", "مطرقة : مسمار"], correct: 0, type: "analog" },
-        { q: "صلاة : إسلام", options: ["عمود : مبنى", "غصن : شجرة", "جدار : منزل", "ماء : جسر"], correct: 0, type: "analog" },
-        { q: "قناعة : انشراح", options: ["محاكاة : مخالفة", "الحاجة : اختراع", "محاكاة : اختراع", "مخالفة : حاجة"], correct: 1, type: "analog" },
-        { q: "صياح : ديك", options: ["عويل : ذئب", "رنين : جرس", "نعيق : الغزال", "نباح : الحمار"], correct: 1, type: "analog" },
-        { q: "سيارة : بنزين", options: ["مقال : فقرة", "خيمة : أوتاد", "قلم : حبر", "خاتم : ذهب"], correct: 2, type: "analog" },
-        { q: "علم : سارية", options: ["إناء : حافظة", "سماء : نجم", "تاج : رأس", "جبل : شجر"], correct: 2, type: "analog" },
-        { q: "ساير : وافق", options: ["صافح : سامح", "استيطان : خوف", "دعم : ساند", "عفا : غفر"], correct: 2, type: "analog" },
-        { q: "سكن : شقة", options: ["مرض : جدري", "خشب : حديد", "سماء : هواء", "مطبخ : طعام"], correct: 0, type: "analog" },
-        { q: "اكتئاب : حزن", options: ["رياضة : سعادة", "جبل : شاهق", "زبيب : عنب", "حزن : خجل"], correct: 0, type: "analog" },
-        // قسم الاستيعاب المقروء (مثال من الملف)
-        { 
-            passage: "يعتبر التعليم الرقمي وسيلة حديثة لتبادل المعرفة تهدف إلى تحسين جودة التعليم وتوفير الوقت والمجهود للمتعلم والمعلم على حد سواء.",
-            q: "الهدف الرئيسي من التعليم الرقمي حسب النص:",
-            options: ["توفير الوقت والمجهود", "بيع الأجهزة", "الاستغناء عن المعلم", "تقليل عدد المدارس"],
-            correct: 0, 
-            type: "reading" 
-        }
+    const questions = [
+        { q: "حمص : عدس", options: ["أ) صحن : قدر", "ب) طريق : سيارة", "ج) ضوء : شمس", "د) مطرقة : مسمار"], correct: 0 },
+        { q: "صلاة : إسلام", options: ["أ) عمود : مبنى", "ب) غصن : شجرة", "ج) جدار : منزل", "د) ماء : جسر"], correct: 0 },
+        { q: "قناعة : انشراح", options: ["أ) محاكاة : مخالفة", "ب) الحاجة : اختراع", "ج) محاكاة : اختراع", "د) مخالفة : حاجة"], correct: 1 },
+        { q: "صياح : ديك", options: ["أ) عويل : ذئب", "ب) رنين : جرس", "ج) نعيق : الغزال", "د) نباح : الحمار"], correct: 1 },
+        { q: "سيارة : بنزين", options: ["أ) مقال : فقرة", "ب) خيمة : أوتاد", "ج) قلم : حبر", "د) خاتم : ذهب"], correct: 2 },
+        { q: "علم : سارية", options: ["أ) إناء : حافظة", "ب) سماء : نجم", "ج) تاج : رأس", "د) جبل : شجر"], correct: 2 },
+        { q: "ساير : وافق", options: ["أ) صافح : سامح", "ب) استيطان : خوف", "ج) دعم : ساند", "د) عفا : غفر"], correct: 2 },
+        { q: "سكن : شقة", options: ["أ) مرض : جدري", "ب) خشب : حديد", "ج) سماء : هواء", "د) مطبخ : طعام"], correct: 0 },
+        { q: "اكتئاب : حزن", options: ["أ) رياضة : سعادة", "ب) جبل : شاهق", "ج) زبيب : عنب", "د) حزن : خجل"], correct: 0 },
+        { q: "لا يوجد حادث بدون ........", options: ["أ) الأشخاص", "ب) السيارات", "ج) سبب", "د) نظرية"], correct: 2 },
+        { q: "يكرم الرجل بـ ......... والصمت ........", options: ["أ) الحكمة - الجميل", "ب) الجمال - خير", "ج) المال - نقمة", "د) اللؤم - شديد"], correct: 0 },
+        { q: "الاستخفاف من الجدية يسبب ....... والاستخفاف من الهزل يسبب .......", options: ["أ) الارتباك - النجاح", "ب) الضعف - الإنجاز", "ج) الفوضى - التوازن", "د) الخيبة - الحماس"], correct: 1 },
+        { q: "أشد الناس ....... أقواهم اعتقاداً في فضل نفسه وأثبت الناس ....... أشدهم اتهاماً لنفسه.", options: ["أ) حماقة - عقلاً", "ب) غضباً - هدوءاً", "ج) عدواً - صديقاً", "د) عالماً - جاهلاً"], correct: 0 },
+        { q: "الشخص ....... هو كثير الاعتقاد في فضل نفسه، والشخص ....... الذي يتهم نفسه.", options: ["أ) الأحمق - العاقل", "ب) المغرور - المتواضع", "ج) الأناني - المتسامح", "د) المتكبر - المتفكر"], correct: 0 },
+        { q: "إذا تذكرت ....... فتذكر تاريخك المشرق لتفرح، وإذا ذكرت ....... فاذكر إنجازاتك لتسعد وإذا ذكرت الغد فتذكر أحلامك للتفاؤل.", options: ["أ) الأحزان - الكروب", "ب) الماضي - يومك", "ج) السالف - الآتي", "د) تهتكك - محاسنك"], correct: 0 },
+        { q: "الغفوة في ضوء الشموع وأمامك كتاب مفتوح في حوار مع أشخاص من أجيال لم تعاصرهم هي المتعة التي ليس لها مثيل. الكلمة الشاذة هي:", options: ["أ) الغفوة", "ب) الشموع", "ج) حوار", "د) لم"], correct: 0 },
+        { q: "عندما يفوز الفريق يفرح مشجعوه، ولكن عندما يخسر يشعر منافسوه بشعور سيء. الكلمة الشاذة هي:", options: ["أ) يفوز", "ب) يخسر", "ج) منافسوه", "د) سيء"], correct: 2 },
+        { q: "من زاد حياؤه، زاد سروره، وهان على الناس. الكلمة الشاذة هي:", options: ["أ) زاد", "ب) سروره", "ج) هان", "د) الناس"], correct: 2 },
+        { q: "الكلمة التي تخرج من الفم لا يمكن استردادها، والفرصة التي تضيع لا يمكن تعويضها. الكلمة الشاذة هي:", options: ["أ) الفم", "ب) استردادها", "ج) تضيع", "د) تعويضها"], correct: 3 },
+        { q: "إن من بواعث التفاؤل أن ترى كل شيء حولك يبعث على الأمل، فتفاءلوا بالخير تجدوه. الكلمة الشاذة هي:", options: ["أ) بواعث", "ب) التفاؤل", "ج) الأمل", "د) تجدوه"], correct: 3 },
+        { q: "المؤمن كالنحلة، لا تأكل إلا طيباً، ولا تضع إلا طيباً. الكلمة الشاذة هي:", options: ["أ) المؤمن", "ب) تأكل", "ج) تضع", "د) طيباً"], correct: 0 },
+        { q: "لا يتم عمل والنية غائبة، ولا يتم قول والعمل غائب. الكلمة الشاذة هي:", options: ["أ) عمل", "ب) النية", "ج) غائبة", "د) غائب"], correct: 0 },
+        { q: "الصديق الحقيقي هو الذي يسندك في وقت الشدة، ويقف بجانبك في السراء والضراء. الكلمة الشاذة هي:", options: ["أ) الحقيقي", "ب) يسندك", "ج) الشدة", "د) السراء"], correct: 3 },
+        { q: "الوقت كالسيف، إن لم تقطعه قطعك، فاحرص على استثماره فيما ينفعك. الكلمة الشاذة هي:", options: ["أ) كالسيف", "ب) تقطعه", "ج) استثماره", "د) ينفعك"], correct: 3 },
+        { q: "النجاح يبدأ بخطوة، والاستمرار فيه يتطلب الصبر والعزيمة. الكلمة الشاذة هي:", options: ["أ) يبدأ", "ب) الاستمرار", "ج) الصبر", "د) العزيمة"], correct: 2 },
+        { q: "القراءة تفتح آفاق العقل، وتنمي الفكر، وتجعل الإنسان مطلعاً على الثقافات. الكلمة الشاذة هي:", options: ["أ) تفتح", "ب) تنمي", "ج) مطلعاً", "د) الثقافات"], correct: 3 },
+        { q: "العلم نور والجهل ظلام، فاحرص على طلب العلم لتنير دربك. الكلمة الشاذة هي:", options: ["أ) نور", "ب) ظلام", "ج) طلب", "د) دربك"], correct: 0 },
+        { q: "العمل الجاد هو السبيل الوحيد لتحقيق الأحلام، والوصول إلى القمة. الكلمة الشاذة هي:", options: ["أ) الجاد", "ب) السبيل", "ج) الأحلام", "د) القمة"], correct: 0 },
+        { q: "الابتسامة لغة لا تحتاج إلى ترجمة، فهي تدخل القلوب بدون استئذان. الكلمة الشاذة هي:", options: ["أ) لغة", "ب) ترجمة", "ج) تدخل", "د) استئذان"], correct: 2 },
+        { q: "الأخلاق الكريمة هي زينة الإنسان، وبها يرتقي في أعين الناس. الكلمة الشاذة هي:", options: ["أ) الكريمة", "ب) زينة", "ج) يرتقي", "د) أعين"], correct: 1 }
     ];
 
-    let currentIndex = 0;
-    let score = 0;
-    let results = [];
+    let currentIdx = 0;
+    let userResults = [];
 
-    function loadQuestion() {
-        const data = quizData[currentIndex];
-        const passageContainer = document.getElementById('passage-container');
-        const optionsContainer = document.getElementById('options-container');
-        const btnNext = document.getElementById('btn-next');
-
-        btnNext.classList.add('hidden');
-        document.getElementById('question-text').innerText = `س${currentIndex + 1}: ${data.q}`;
-        
-        if (data.type === "reading") {
-            passageContainer.classList.remove('hidden');
-            document.getElementById('passage-text').innerText = data.passage;
-        } else {
-            passageContainer.classList.add('hidden');
-        }
-
-        optionsContainer.innerHTML = '';
-        data.options.forEach((opt, idx) => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.innerText = opt;
-            btn.onclick = () => selectOption(idx, btn);
-            optionsContainer.appendChild(btn);
+    function renderQuestions() {
+        const container = document.getElementById('quiz-body');
+        questions.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = `question-box ${index === 0 ? 'active' : ''}`;
+            div.id = `q-block-${index}`;
+            div.innerHTML = `
+                <div class="question-title">س${index + 1}: ${item.q}</div>
+                <div class="options-grid">
+                    ${item.options.map((opt, i) => `
+                        <button class="option-btn" onclick="checkAnswer(${index}, ${i}, this)">${opt}</button>
+                    `).join('')}
+                </div>
+            `;
+            container.appendChild(div);
         });
     }
 
-    function selectOption(idx, btn) {
-        const data = quizData[currentIndex];
-        const allBtns = document.querySelectorAll('.option-btn');
-        allBtns.forEach(b => b.style.pointerEvents = 'none');
+    function checkAnswer(qIdx, choiceIdx, btn) {
+        const correctIdx = questions[qIdx].correct;
+        const btns = document.querySelectorAll(`#q-block-${qIdx} .option-btn`);
+        btns.forEach(b => b.style.pointerEvents = 'none');
 
-        if (idx === data.correct) {
+        if (choiceIdx === correctIdx) {
             btn.classList.add('correct');
-            score++;
-            results.push({ q: data.q, user: data.options[idx], status: "✅" });
+            userResults.push("✅");
         } else {
             btn.classList.add('wrong');
-            allBtns[data.correct].classList.add('correct');
-            results.push({ q: data.q, user: data.options[idx], status: "❌" });
+            btns[correctIdx].classList.add('correct');
+            userResults.push("❌");
         }
-        document.getElementById('btn-next').classList.remove('hidden');
     }
 
-    function nextStep() {
-        currentIndex++;
-        if (currentIndex < quizData.length) {
-            loadQuestion();
+    function nextQuestion() {
+        if (userResults.length <= currentIdx) {
+            alert("يرجى اختيار إجابة أولاً");
+            return;
+        }
+        document.getElementById(`q-block-${currentIdx}`).classList.remove('active');
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            document.getElementById(`q-block-${currentIdx}`).classList.add('active');
         } else {
-            showSummary();
+            showFinalResults();
         }
     }
 
-    function showSummary() {
-        document.getElementById('quiz-section').classList.add('hidden');
-        document.getElementById('result-section').classList.remove('hidden');
-        document.getElementById('score-display').innerText = score;
-        document.getElementById('total-display').innerText = quizData.length;
-
-        const body = document.getElementById('summary-body');
-        results.forEach(res => {
-            body.innerHTML += `<tr><td>${res.q}</td><td>${res.user}</td><td>${res.status}</td></tr>`;
+    function showFinalResults() {
+        document.getElementById('nav-controls').style.display = 'none';
+        document.getElementById('results-area').style.display = 'block';
+        const tbody = document.getElementById('results-table-body');
+        userResults.forEach((res, i) => {
+            tbody.innerHTML += `<tr><td>سؤال ${i+1}</td><td>${res}</td></tr>`;
         });
     }
 
-    loadQuestion();
+    renderQuestions();
 </script>
 </body>
 </html>
